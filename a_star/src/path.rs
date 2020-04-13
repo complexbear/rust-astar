@@ -1,4 +1,6 @@
-#[derive(Debug)]
+use std::fmt;
+use trees::{tr, fr, Tree};
+
 pub struct PathNode {
     cost_weight: f32,
     pos_x: i32,
@@ -21,4 +23,15 @@ impl PathNode {
         ) as f32;
         return z.sqrt();
     }
+}
+
+impl fmt::Display for PathNode {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(f, "PathNode: {}, ({}:{})", self.cost_weight, self.pos_x, self.pos_y)
+    }
+}
+
+pub fn create_tree() -> Tree<PathNode> {
+    let n = tr(PathNode::new(1.0, 0, 0));
+    return n;
 }
